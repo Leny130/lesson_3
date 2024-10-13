@@ -71,19 +71,62 @@ WHERE
 ```
 
 
-8. Подождал некоторое время, проверяя, пришел ли автовакуум
+8. Подождал некоторое время, проверил автовакуум
    
 10. 5 раз обновил все строчки и добавил к каждой строчке любой символ
+```
+UPDATE test_table
+SET id = id || '!'
+isotest3-# UPDATE test_table
+SET id = id || '2'
+isotest3-# UPDATE test_table
+SET id = id || 'h'
+isotest3-# UPDATE test_table
+SET id = id || '-'
+isotest3-# UPDATE test_table
+SET id = id || '='
+```
   
 12. Посмотрел размер файла с таблицей
+```
+isotest3=# SELECT pg_size_pretty( pg_database_size( 'isotest3' ) );
+ pg_size_pretty
+----------------
+ 95 MB
+(1 row)
+```
+```
+isotest3=# SELECT pg_size_pretty( pg_total_relation_size( 'test_table' ) );
+ pg_size_pretty
+----------------
+ 87 MB
+(1 row)
+```
     
-14. Отключил автовакуум на конкретной таблице
+13. Отключил автовакуум на конкретной таблице
+ ```
+isotest3=# ALTER TABLE test_table SET (autovacuum_enabled = false);
+ALTER TABLE
+```
     
-16. 10 раз обновил все строчки и добавил к каждой строчке любой символ
+15. 10 раз обновил все строчки и добавил к каждой строчке любой символ
     
-18. Посмотрел размер файла с таблицей
+16. Посмотрел размер файла с таблицей, но не дождался.
+```isotest3=# SELECT pg_size_pretty( pg_total_relation_size( 'test_table' ) );
+ pg_size_pretty
+----------------
+ 87 MB
+(1 row)
+```
+```
+
+isotest3=# SELECT pg_size_pretty( pg_database_size( 'isotest3' ) );
+ pg_size_pretty
+----------------
+ 95 MB
+(1 row)
+```    
+18. Полученный результат отсутсвует
     
-20. Полученный результат
-    
-22. Не забудьте включить автовакуум)
+19. Не забудьте включить автовакуум
 
