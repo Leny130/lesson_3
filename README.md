@@ -33,13 +33,13 @@ SELECT pg_size_pretty( pg_total_relation_size( 'test_table' ) );
 
    
 4. 5 раз обновил все строчки и добавил к каждой строчке любой символ
-   ```
-   UPDATE test_table
-   SET text_field = text_field || '$'
+```
+UPDATE test_table
+SET text_field = text_field || '$'
 
-   UPDATE test_table
-   SET id = id || '$'
-   ```
+UPDATE test_table
+SET id = id || '$'
+```
    
 6. Посмотрел количество мертвых строчек в таблице и когда последний раз приходил автовакуум
    
