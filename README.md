@@ -42,7 +42,33 @@ SET id = id || '$'
 ```
    
 6. Посмотрел количество мертвых строчек в таблице и когда последний раз приходил автовакуум
-   
+   ```
+SELECT
+    relname AS teat_table,
+    n_dead_tup AS dead_tuples
+FROM
+    pg_stat_user_tables
+WHERE
+    relname = 'your_table_name';
+ teat_table | dead_tuples
+------------+-------------
+(0 rows)
+
+SELECT
+    relname AS table_name,
+    last_vacuum,
+    last_autovacuum,
+    n_dead_tup AS dead_tuples
+FROM
+    pg_stat_user_tables
+WHERE
+    relname = 'test_table';
+ table_name | last_vacuum | last_autovacuum | dead_tuples
+------------+-------------+-----------------+-------------
+(0 rows)
+```
+
+
 8. Подождал некоторое время, проверяя, пришел ли автовакуум
    
 10. 5 раз обновил все строчки и добавил к каждой строчке любой символ
