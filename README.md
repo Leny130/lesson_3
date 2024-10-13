@@ -42,7 +42,7 @@ SET id = id || '$'
 ```
    
 6. Посмотрел количество мертвых строчек в таблице и когда последний раз приходил автовакуум
-   ```
+```
 SELECT
     relname AS teat_table,
     n_dead_tup AS dead_tuples
@@ -53,7 +53,8 @@ WHERE
  teat_table | dead_tuples
 ------------+-------------
 (0 rows)
-
+```
+```
 SELECT
     relname AS table_name,
     last_vacuum,
