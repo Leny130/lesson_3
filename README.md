@@ -109,9 +109,9 @@ isotest3=# ALTER TABLE test_table SET (autovacuum_enabled = false);
 ALTER TABLE
 ```
     
-15. 10 раз обновил все строчки и добавил к каждой строчке любой символ
+14. 10 раз обновил все строчки и добавил к каждой строчке любой символ
     
-16. Посмотрел размер файла с таблицей, но не дождался.
+15. Посмотрел размер файла с таблицей, но не дождался.
 ```isotest3=# SELECT pg_size_pretty( pg_total_relation_size( 'test_table' ) );
  pg_size_pretty
 ----------------
@@ -126,7 +126,10 @@ isotest3=# SELECT pg_size_pretty( pg_database_size( 'isotest3' ) );
  95 MB
 (1 row)
 ```    
-18. Полученный результат отсутсвует
+16. Полученный результат отсутсвует ( что-то я сделал не так)
     
-19. Не забудьте включить автовакуум
+17. Не забудьте включить автовакуум
+```
+ALTER TABLE test_table SET (autovacuum_enabled = true);
+```
 
