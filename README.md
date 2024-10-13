@@ -5,11 +5,20 @@
 2. Посмотрел размер файла с таблицей
    
 ```
-SELECT pg_size_pretty( pg_database_size( 'sample_db' ) );
+SELECT pg_size_pretty( pg_database_size( 'isotest3' ) );
+
+ pg_size_pretty
+----------------
+ 95 MB
+(1 row)
 ```
 
 ```
-SELECT pg_size_pretty( pg_total_relation_size( 'table' ) );
+SELECT pg_size_pretty( pg_total_relation_size( 'test_table' ) );
+ pg_size_pretty
+----------------
+ 87 MB
+(1 row)
 ```
 
    
