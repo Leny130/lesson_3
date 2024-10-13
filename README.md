@@ -64,9 +64,10 @@ FROM
     pg_stat_user_tables
 WHERE
     relname = 'test_table';
- table_name | last_vacuum | last_autovacuum | dead_tuples
-------------+-------------+-----------------+-------------
-(0 rows)
+ table_name | last_vacuum |        last_autovacuum        | dead_tuples
+------------+-------------+-------------------------------+-------------
+ test_table |             | 2024-10-13 14:57:58.362969+03 |           0
+(1 row)
 ```
 
 
