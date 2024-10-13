@@ -3,6 +3,21 @@
 1.Создал таблицу с текстовым полем и заполнил сгенерированными данным в размере 1 млн строк
 
 2. Посмотрел размер файла с таблицей
+   ```
+   SELECT nspname || '.' || relname AS "relation",
+    pg_size_pretty(pg_relation_size(C.oid)) AS "size"
+  FROM pg_class C
+  LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace)
+  WHERE nspname NOT IN ('pg_catalog', 'information_schema')
+  ORDER BY pg_relation_size(C.oid) DESC;
+  ```
+  ```
+  SELECT pg_size_pretty( pg_database_size( 'sample_db' ) );
+  ```
+```
+SELECT pg_size_pretty( pg_total_relation_size( 'table' ) );
+```
+
    
 4. 5 раз обновил все строчки и добавил к каждой строчке любой символ
    
